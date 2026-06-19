@@ -1,0 +1,148 @@
+{
+  "project_context": {
+    "brand_name": "Goal Computing Labs",
+    "product_name": "GoalOS",
+    "domain": "Enterprise AI OS / High-Tech Startup",
+    "mission": "To create a goal-driven computing platform where software dynamically adapts to human intent.",
+    "theme": "Dark",
+    "archetype": "Archetype 5 (Luxury/Premium Tech) + Archetype 4 (Swiss/High-Contrast)",
+    "rationale": "A thundering, revolutionary OS needs to feel like the future. By merging Luxury (deep blacks, cinematic grain/textures, crystal glass) with Swiss Brutalism (stark typography, rigid bento grids, massive contrast), we convey absolute authority and advanced technological capability."
+  },
+  "colors": {
+    "background": {
+      "base": "#030303",
+      "surface": "#09090B",
+      "glass_light": "rgba(255, 255, 255, 0.02)",
+      "glass_heavy": "rgba(10, 10, 10, 0.6)"
+    },
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "muted": "#52525B"
+    },
+    "brand_accents": {
+      "primary": "#FFFFFF",
+      "kinetic_glow": "#2563EB",
+      "kinetic_secondary": "#F8FAFC",
+      "banned_colors": ["#9D4CDD", "#1B93A4", "#7351B7", "Generic Purple-Blue Gradients"]
+    },
+    "borders": {
+      "glass": "rgba(255, 255, 255, 0.08)",
+      "focus": "rgba(255, 255, 255, 0.3)"
+    }
+  },
+  "typography": {
+    "headings": {
+      "family": "Outfit, sans-serif",
+      "weight": "font-light to font-medium",
+      "tracking": "tracking-tighter",
+      "h1_size": "text-5xl md:text-6xl max-w-5xl",
+      "h2_size": "text-3xl md:text-4xl",
+      "h3_size": "text-xl md:text-2xl"
+    },
+    "body": {
+      "family": "Manrope, sans-serif",
+      "size": "text-base md:text-lg",
+      "color": "text-secondary",
+      "leading": "leading-relaxed"
+    },
+    "labels": {
+      "family": "Outfit, sans-serif",
+      "casing": "uppercase",
+      "tracking": "tracking-[0.2em]",
+      "size": "text-xs font-bold text-muted"
+    }
+  },
+  "layout_and_spacing": {
+    "philosophy": "Generous Spacing (p-12, p-16, py-24). Allow the 3D elements and dark canvas to breathe.",
+    "grids": "The 'Bento' Grid Protocol. Use grid-cols-1 md:grid-cols-12 with wide gaps (gap-8). Mix span sizes (e.g., col-span-8 for hero, col-span-4 for supporting elements).",
+    "alignment": "Optical Alignment over Geometric. Heavy use of asymmetrical tension."
+  },
+  "surfaces_and_effects": {
+    "glassmorphism": {
+      "usage": "Headers, Floating Navs, Modal Overlays",
+      "classes": "backdrop-blur-xl bg-white/[0.02] border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-2xl"
+    },
+    "cards": {
+      "usage": "Feature showcase, Product details",
+      "classes": "bg-[#09090B] border border-white/[0.05] rounded-xl overflow-hidden hover:border-white/[0.15] transition-colors duration-500 p-8"
+    },
+    "buttons": {
+      "primary": "bg-white text-black font-medium px-6 py-3 rounded-full hover:bg-gray-200 transition-all",
+      "secondary": "backdrop-blur-md bg-white/[0.05] border border-white/[0.1] text-white px-6 py-3 rounded-full hover:bg-white/[0.1] transition-all"
+    }
+  },
+  "motion_and_3d": {
+    "cursor": "Implement a custom framer-motion or GSAP cursor. A subtle glowing orb (backdrop-invert or mix-blend-difference) that follows the mouse.",
+    "webgl_background": "Use React Three Fiber + Drei or raw WebGL shaders (Three.js). We need a 'thundering' ambient background: dark, stormy particle clouds, or an abstract fluid simulation with deep kinetic glows that respond slowly to scroll.",
+    "page_transitions": "Lenis for smooth scrolling (MANDATORY). Framer Motion for staggered fade-up on text (y: 20, opacity: 0 to 1).",
+    "glass_reveal": "Cards should have a 'Tracing Beam' or a gradient mask that reveals their border gently on hover."
+  },
+  "pages_structure": {
+    "company_landing": {
+      "path": "/",
+      "sections": [
+        "Hero: Massive 'Goal Computing Labs' title, WebGL interactive background, subtle glass header.",
+        "Mission Statement: Full viewport height, typography-driven, staggering text animation.",
+        "Belief: 'Software should adapt to humans — not humans to software.' - High impact bento layout.",
+        "CTA Split: Navigate to GoalOS (Product) or Contact Us (mailto link)."
+      ]
+    },
+    "product_landing": {
+      "path": "/goalos",
+      "sections": [
+        "Hero: 'GoalOS — The world's first Adaptive Goal-Driven Computing Platform.' 3D interactive center-piece.",
+        "The Problem vs Solution: Horizontal scroll or split layout. 'Need → Find → Learn' vs 'Need → Describe → Done'.",
+        "How GBC Works: 5-step interactive scrollytelling list with changing visual right-pane.",
+        "Live Examples: Bento cards showing UI generation (PDF Merge, Invoice, Expenses) appearing dynamically.",
+        "Architecture: Visualizing Local vs Cloud layer (Abstract tech nodes).",
+        "Target Audience & Comparison Table: Clean, Swiss-style data table.",
+        "Vision & Waitlist CTA."
+      ]
+    },
+    "about_founder": {
+      "path": "/about",
+      "sections": [
+        "Minimalist cinematic layout.",
+        "Founder Profile: Mr. V S S K Sai Narayana.",
+        "Photo on one side with aggressive crop/scale, bio and quotes on the right.",
+        "Social Links: LinkedIn, GitHub."
+      ]
+    },
+    "waitlist": {
+      "path": "/waitlist",
+      "sections": [
+        "Focused, distraction-free screen.",
+        "Glassmorphism form floating in center.",
+        "Inputs: Email, Role (Business/Student/etc).",
+        "Backend connection to capture leads."
+      ]
+    }
+  },
+  "media_urls": {
+    "founder_photo": {
+      "url": "https://media.licdn.com/dms/image/v2/D4D03AQHZKu_JQV2J6A/profile-displayphoto-scale_400_400/B4DZshe7AYH0Ag-/0/1765793315718?e=1783555200&v=beta&t=r3xvlfJQN9VleACxJD-n1GX8ttps6pLrLYYOkkdi6Bs",
+      "category": "About Page Profile",
+      "description": "Founder Mr. V S S K Sai Narayana Profile Photo"
+    },
+    "abstract_textures": [
+      {
+        "url": "https://images.pexels.com/photos/12537426/pexels-photo-12537426.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "category": "Hero Background Fallback",
+        "description": "Abstract black metallic surface featuring intricate patterns."
+      },
+      {
+        "url": "https://images.pexels.com/photos/13156181/pexels-photo-13156181.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "category": "Section Background Fallback",
+        "description": "Dark abstract close-up of illuminated geometric shapes."
+      }
+    ]
+  },
+  "components_instructions": {
+    "routing": "Use React Router DOM for the 4 distinct pages.",
+    "shadcn": "Heavily customize any Shadcn component used. Remove default borders, apply the glassmorphism variables. Use Shadcn for inputs, dialogs, and tables.",
+    "icons": "Use 'lucide-react' for clean, neutral icons.",
+    "testing": "All interactive elements (buttons, links, inputs) MUST have a data-testid attribute (e.g., data-testid='hero-cta-product')."
+  }
+}
+
