@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="100%" height="100%">
+  <style>
+    .outer-box {
+      fill: none;
+      stroke: rgba(0, 0, 0, 0.3);
+      stroke-width: 1.5px;
+    }
+    .orbit-ring {
+      fill: none;
+      stroke: rgba(37, 99, 235, 0.55);
+      stroke-width: 1px;
+    }
+    .inner-diamond {
+      fill: #2563eb;
+    }
+    @media (prefers-color-scheme: dark) {
+      .outer-box {
+        stroke: rgba(255, 255, 255, 0.35);
+      }
+      .orbit-ring {
+        stroke: rgba(37, 99, 235, 0.7);
+      }
+      .inner-diamond {
+        fill: #3b82f6;
+      }
+    }
+  </style>
+  <!-- Outer rotating box -->
+  <rect class="outer-box" x="1" y="1" width="36" height="36" rx="6" />
+  
+  <!-- Orbit ring (inset 4px from 38x38 means 30x30 bounding box) -->
+  <circle class="orbit-ring" cx="19" cy="19" r="14.5" />
+  
+  <!-- Inner diamond -->
+  <rect class="inner-diamond" x="-5" y="-5" width="10" height="10" rx="2" transform="translate(19, 19) rotate(45)" />
+</svg>

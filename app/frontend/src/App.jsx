@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
+import ScrollToTop from './components/ScrollToTop';
 import CustomCursor from './components/CustomCursor';
 import WebGLBackground from './components/WebGLBackground';
 import Home from './pages/Home';
@@ -13,6 +14,7 @@ function App() {
       <CustomCursor />
       <WebGLBackground />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/goalos" element={<GoalOS />} />
