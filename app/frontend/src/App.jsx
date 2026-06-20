@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import GoalOS from './pages/GoalOS';
 import Founder from './pages/Founder';
 import Waitlist from './pages/Waitlist';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="*" element={<Home />} />
         </Routes>
       </BrowserRouter>
+      <Analytics />
     </div>
   );
 }
