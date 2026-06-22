@@ -29,7 +29,7 @@ export default function Founder() {
 
       {/* ── Hero ── */}
       <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '7rem', paddingBottom: '5rem' }}>
-        <div style={{ padding: '0 4rem', maxWidth: '100%' }}>
+        <div className="founder-pad">
           <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '6rem', alignItems: 'center' }} className="founder-hero-grid">
 
             {/* ── Image block ── */}
@@ -187,8 +187,8 @@ export default function Founder() {
 
       {/* ── Core Values ── */}
       <section className="section">
-        <div style={{ padding: '0 4rem', maxWidth: '100%' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1.5rem' }}>
+        <div className="founder-pad">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '1.5rem' }} className="founder-values-grid">
             {values.map((v, i) => (
               <div key={v.n} className="dark-card" style={{ padding: '2.5rem' }}>
                 <div style={{ fontSize: '2.5rem', fontWeight: 200, color: 'rgba(37,99,235,0.4)', fontFamily: 'Outfit,sans-serif', letterSpacing: '-0.05em', marginBottom: '1.25rem', lineHeight: 1 }}>{v.n}</div>
@@ -202,7 +202,7 @@ export default function Founder() {
 
       {/* ── Contact Founder ── */}
       <section className="section">
-        <div style={{ padding: '0 4rem', maxWidth: '100%' }}>
+        <div className="founder-pad">
           <div style={{
             display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem',
           }} className="contact-grid">
@@ -265,7 +265,7 @@ export default function Founder() {
         </div>
       </section>
       <section className="section">
-        <div style={{ padding: '0 4rem', maxWidth: '100%' }}>
+        <div className="founder-pad">
           <div className="dark-card" style={{ padding: '3rem 3.5rem', display: 'grid', gridTemplateColumns: '1fr auto', gap: '3rem', alignItems: 'center' }} className="founder-cta-grid">
             <div>
               <div style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#52525b', fontFamily: 'Outfit,sans-serif', marginBottom: '0.75rem' }}>Next</div>
@@ -288,15 +288,38 @@ export default function Founder() {
       <Footer />
 
       <style>{`
+        /* ── Founder: section padding ── */
+        .founder-pad { padding: 0 4rem; max-width: 100%; }
+
+        /* Tablet */
         @media (max-width: 1024px) {
-          .founder-hero-grid { grid-template-columns: 1fr !important; }
+          .founder-pad { padding: 0 2rem; }
+          .founder-hero-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+          .founder-hero-grid > div:first-child { max-width: 380px; margin: 0 auto; }
+          .founder-values-grid { grid-template-columns: 1fr 1fr 1fr !important; }
         }
+
+        /* Mobile */
         @media (max-width: 768px) {
-          .founder-hero-grid { grid-template-columns: 1fr !important; padding: 0 1.5rem !important; }
-          .founder-cta-grid { grid-template-columns: 1fr !important; }
+          .founder-pad { padding: 0 1.25rem; }
+          .founder-hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+          }
+          .founder-hero-grid > div:first-child { max-width: 320px; }
+          .founder-cta-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
           .contact-grid { grid-template-columns: 1fr !important; }
-          section [style*="repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
-          section [style*="padding: 0 4rem"] { padding: 0 1.5rem !important; }
+          .founder-values-grid { grid-template-columns: 1fr !important; }
+          .founder-cta-grid .dark-card { padding: 2rem 1.5rem !important; }
+        }
+
+        /* Small mobile */
+        @media (max-width: 480px) {
+          .founder-pad { padding: 0 1rem; }
+          .founder-hero-grid > div:first-child { max-width: 100%; }
         }
       `}</style>
     </div>

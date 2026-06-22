@@ -57,7 +57,7 @@ function Marquee() {
   ));
 
   return (
-    <div style={{ overflow: 'hidden', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '2rem 0', margin: '4rem 0' }}>
+    <div style={{ overflow: 'hidden', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '2rem 0', margin: '4rem 0 0' }}>
       <div style={{ display: 'inline-flex', gap: '2rem', animation: 'marquee 28s linear infinite', whiteSpace: 'nowrap' }}>
         {content}{content}{content}
       </div>
@@ -65,7 +65,7 @@ function Marquee() {
   );
 }
 
-/* ── CTA card — flips to light only on hover when canInvert=true ── */
+/* ── CTA card ── */
 function CtaCard({ tag, heading, desc, action, canInvert = false }) {
   const [hov, setHov] = useState(false);
   const flipped = canInvert && hov;
@@ -114,22 +114,15 @@ export default function Home() {
       <Navigation />
 
       {/* ── Hero ─────────────────────────────────────────── */}
-      <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '7rem', paddingBottom: '4rem' }}>
-        <div className="container-xl" style={{ maxWidth: '100%', padding: '0 4rem' }}>
+      <section className="home-hero-section">
+        <div className="home-section-pad">
 
           <div className="label-line" style={{ ...fade(0), marginBottom: '2rem' }}>
             <span className="label-tag">A New Category of Computing · 2026</span>
           </div>
 
           {/* Full-width headline */}
-          <h1 style={{
-            ...fade(0.1),
-            fontSize: 'clamp(4rem,9.5vw,8.5rem)',
-            fontWeight: 300, lineHeight: 0.95,
-            letterSpacing: '-0.05em',
-            maxWidth: '100%',
-            marginBottom: '2.5rem',
-          }}>
+          <h1 className="home-hero-headline" style={{ ...fade(0.1) }}>
             Software should adapt
             <br />
             to{' '}
@@ -138,12 +131,12 @@ export default function Home() {
             </span>
           </h1>
 
-          {/* Sub + CTAs side by side */}
-          <div style={{ ...fade(0.2), display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'flex-end' }}>
+          {/* Sub + CTAs */}
+          <div className="home-hero-sub-row" style={fade(0.2)}>
             <p style={{ fontSize: '1.05rem', color: '#a1a1aa', lineHeight: 1.8, maxWidth: '480px' }}>
               Goal Computing Labs is pioneering an entirely new way for people and machines to work together — eliminating the friction, learning curves, and clutter of traditional software.
             </p>
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'flex-end', paddingBottom: '0.25rem' }}>
+            <div className="home-hero-cta-group">
               <Link to="/goalos" className="btn-primary" data-testid="hero-cta-product" style={{ fontSize: '0.9rem', padding: '0.75rem 1.6rem' }}>
                 Discover GoalOS →
               </Link>
@@ -154,18 +147,13 @@ export default function Home() {
           </div>
 
           {/* Stat row */}
-          <div style={{
-            ...fade(0.35),
-            display: 'grid', gridTemplateColumns: 'repeat(3,1fr)',
-            gap: '0', marginTop: '6rem',
-            borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '2.5rem',
-          }}>
+          <div className="home-stat-row" style={fade(0.35)}>
             {[
               ['01', 'MISSION', 'Eliminate complexity from computing.'],
               ['02', 'PRODUCT', 'GoalOS · adaptive task-execution.'],
               ['03', 'ENGINE',  'GBC · Goal-Based Computing.'],
             ].map(([n, l, t], i) => (
-              <div key={n} style={{ padding: '0 3rem', borderLeft: i > 0 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
+              <div key={n} className={`home-stat-item ${i > 0 ? 'home-stat-item--bordered' : ''}`}>
                 <div style={{ fontSize: '2.5rem', fontWeight: 200, color: 'rgba(255,255,255,0.12)', fontFamily: 'Outfit,sans-serif', letterSpacing: '-0.04em', lineHeight: 1, marginBottom: '0.5rem' }}>
                   {n}
                 </div>
@@ -184,8 +172,8 @@ export default function Home() {
 
       {/* ── What We Believe ─────────────────────────────── */}
       <section className="section">
-        <div className="container-xl" style={{ maxWidth: '100%', padding: '0 4rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '6rem', alignItems: 'center' }}>
+        <div className="home-section-pad">
+          <div className="home-believe-grid">
             {/* Left */}
             <div>
               <div className="label-line" style={{ marginBottom: '1.5rem' }}>
@@ -202,10 +190,9 @@ export default function Home() {
             </div>
 
             {/* Right: 2×2 bento */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="home-features-grid">
               {features.map(({ Icon, title, desc }, i) => (
                 <div key={i} className="dark-card" style={{ padding: '2rem', position: 'relative', overflow: 'hidden' }}>
-                  {/* Subtle glow bg */}
                   <div style={{ position: 'absolute', top: -20, left: -20, width: 80, height: 80, background: 'radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
                   <div style={{ marginBottom: '1.25rem', position: 'relative' }}><Icon /></div>
                   <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff', marginBottom: '0.5rem', fontFamily: 'Outfit,sans-serif', letterSpacing: '-0.01em' }}>
@@ -223,14 +210,14 @@ export default function Home() {
 
       {/* ── The Shift ───────────────────────────────────── */}
       <section className="section">
-        <div className="container-xl" style={{ maxWidth: '100%', padding: '0 4rem' }}>
+        <div className="home-section-pad">
           <div className="label-line" style={{ marginBottom: '1rem' }}>
             <span className="label-tag">The Shift</span>
           </div>
           <h2 style={{ fontSize: 'clamp(2.5rem,5vw,4rem)', fontWeight: 300, letterSpacing: '-0.04em', marginBottom: '3.5rem' }}>
             From apps to outcomes.
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+          <div className="home-shift-grid">
             {/* Today */}
             <div className="dark-card" style={{ padding: '2.75rem' }}>
               <div className="label-tag" style={{ marginBottom: '1.75rem' }}>Today</div>
@@ -264,9 +251,8 @@ export default function Home() {
 
       {/* ── CTA Pair ────────────────────────────────────── */}
       <section className="section">
-        <div className="container-xl" style={{ maxWidth: '100%', padding: '0 4rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
-            {/* Dark card — Explore GoalOS (no invert) */}
+        <div className="home-section-pad">
+          <div className="home-cta-grid">
             <CtaCard
               tag="Our Flagship Product"
               heading="Explore GoalOS"
@@ -278,7 +264,6 @@ export default function Home() {
                 </Link>
               )}
             />
-            {/* Let's talk — flips to white only on hover */}
             <CtaCard
               tag="Connect With Us"
               heading="Let's talk."
@@ -313,15 +298,127 @@ export default function Home() {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-33.33%); }
         }
-        @media (max-width: 900px) {
-          section [style*="grid-template-columns: 5fr 7fr"],
-          section [style*="grid-template-columns: 1fr 1fr"],
-          section [style*="grid-template-columns: repeat(3,1fr)"] {
-            grid-template-columns: 1fr !important;
+
+        /* ── Home page layout helpers ── */
+        .home-hero-section {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding-top: 7rem;
+          padding-bottom: 4rem;
+        }
+        .home-section-pad {
+          max-width: 100%;
+          padding: 0 4rem;
+        }
+        .home-hero-headline {
+          font-size: clamp(3.5rem, 9.5vw, 8.5rem);
+          font-weight: 300;
+          line-height: 0.95;
+          letter-spacing: -0.05em;
+          max-width: 100%;
+          margin-bottom: 2.5rem;
+        }
+        .home-hero-sub-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: flex-end;
+        }
+        .home-hero-cta-group {
+          display: flex;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          padding-bottom: 0.25rem;
+        }
+        .home-stat-row {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0;
+          margin-top: 6rem;
+          border-top: 1px solid rgba(255,255,255,0.06);
+          padding-top: 2.5rem;
+        }
+        .home-stat-item {
+          padding: 0 3rem;
+        }
+        .home-stat-item--bordered {
+          border-left: 1px solid rgba(255,255,255,0.05);
+        }
+        .home-believe-grid {
+          display: grid;
+          grid-template-columns: 5fr 7fr;
+          gap: 6rem;
+          align-items: center;
+        }
+        .home-features-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
+        .home-shift-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+        }
+        .home-cta-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.25rem;
+        }
+
+        /* ── Tablet ── */
+        @media (max-width: 1024px) {
+          .home-section-pad { padding: 0 2rem; }
+          .home-hero-sub-row { gap: 2rem; }
+          .home-stat-item { padding: 0 1.5rem; }
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 768px) {
+          .home-section-pad { padding: 0 1.25rem; }
+          .home-hero-section { padding-top: 6rem; padding-bottom: 3rem; }
+          .home-hero-headline { font-size: clamp(2.8rem, 12vw, 5rem); line-height: 1.0; margin-bottom: 1.75rem; }
+
+          .home-hero-sub-row {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
           }
-          section [style*="padding: 0 4rem"] {
-            padding: 0 1.5rem !important;
+          .home-hero-cta-group {
+            justify-content: flex-start;
           }
+
+          .home-stat-row {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 3rem;
+          }
+          .home-stat-item { padding: 0; }
+          .home-stat-item--bordered {
+            border-left: none;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 1.5rem;
+          }
+
+          .home-believe-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+          }
+          .home-features-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+          }
+          .home-shift-grid { grid-template-columns: 1fr; }
+          .home-cta-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── Small mobile ── */
+        @media (max-width: 480px) {
+          .home-section-pad { padding: 0 1rem; }
+          .home-features-grid { grid-template-columns: 1fr; }
+          .home-hero-headline { font-size: clamp(2.4rem, 11vw, 4rem); }
         }
       `}</style>
     </div>

@@ -4,8 +4,14 @@ export default function CustomCursor() {
   const dotRef = useRef(null);
   const ringRef = useRef(null);
   const [hovered, setHovered] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Detect touch-primary devices — hide cursor on them
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    setIsTouchDevice(isTouch);
+    if (isTouch) return;
+
     let dotX = 0, dotY = 0;
     let ringX = 0, ringY = 0;
     let raf;
@@ -57,6 +63,8 @@ export default function CustomCursor() {
       cancelAnimationFrame(raf);
     };
   }, []);
+
+  if (isTouchDevice) return null;
 
   return (
     <>

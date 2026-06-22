@@ -76,7 +76,7 @@ const audience = [
   ['05','Enterprises','Adaptive tools for non-technical staff — no training costs.'],
 ];
 
-const P = '0 4rem'; // section padding
+const P = '0 4rem'; // desktop section padding — overridden via CSS on mobile
 
 export default function GoalOS() {
   const [heroVis, setHeroVis] = useState(false);
@@ -89,7 +89,7 @@ export default function GoalOS() {
 
       {/* ── Hero ── */}
       <section style={{ minHeight:'100vh', display:'flex', flexDirection:'column', justifyContent:'center', paddingTop:'7rem', paddingBottom:'4rem' }}>
-        <div style={{ padding: P, maxWidth:'100%' }}>
+        <div className="goalos-pad">
           <div style={{ ...hf(0), display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'2rem' }}>
             <div style={{ width:'2rem', height:'2px', background:'#2563eb', borderRadius:'2px' }} />
             <span style={{ fontFamily:'Outfit,sans-serif', fontSize:'0.65rem', fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', color:'#2563eb' }}>
@@ -127,8 +127,8 @@ export default function GoalOS() {
 
       {/* ── Problem ── */}
       <section className="section">
-        <div style={{ padding:P, maxWidth:'100%' }}>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'6rem', alignItems:'center' }}>
+        <div className="goalos-pad">
+          <div className="goalos-problem-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'6rem', alignItems:'center' }}>
             <div>
               <div className="label-line"><span className="label-tag">The Problem</span></div>
               <h2 style={{ fontSize:'clamp(2.5rem,5vw,4rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0', lineHeight:1.05 }}>Today's model<br />is broken.</h2>
@@ -147,14 +147,14 @@ export default function GoalOS() {
 
       {/* ── How GBC Works ── */}
       <section className="section" id="how-it-works">
-        <div style={{ padding:P, maxWidth:'100%' }}>
+        <div className="goalos-pad">
           <div className="label-line"><span className="label-tag">How GBC Works</span></div>
           <h2 style={{ fontSize:'clamp(2.5rem,5vw,4rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 4rem', lineHeight:1.05 }}>
             Five steps. Zero learning.<br />Infinite goals.
           </h2>
           {steps.map((s, i) => (
             <Reveal key={i} delay={i * 100}>
-              <div style={{ display:'grid', gridTemplateColumns:'100px 1fr', gap:'2rem', padding:'2.5rem 0', borderBottom:'1px solid rgba(255,255,255,0.05)', alignItems:'start' }}>
+              <div className="goalos-step-item" style={{ display:'grid', gridTemplateColumns:'100px 1fr', gap:'2rem', padding:'2.5rem 0', borderBottom:'1px solid rgba(255,255,255,0.05)', alignItems:'start' }}>
                 <div style={{ fontFamily:'Outfit,sans-serif', fontSize:'3rem', fontWeight:200, color:'rgba(37,99,235,0.35)', letterSpacing:'-0.05em', lineHeight:1 }}>{s.n}</div>
                 <div>
                   <div style={{ fontSize:'1.1rem', fontWeight:600, color:'#fff', marginBottom:'0.6rem', fontFamily:'Outfit,sans-serif' }}>{s.t}</div>
@@ -168,10 +168,10 @@ export default function GoalOS() {
 
       {/* ── Live Examples ── */}
       <section className="section">
-        <div style={{ padding:P, maxWidth:'100%' }}>
+        <div className="goalos-pad">
           <div className="label-line"><span className="label-tag">Live Examples</span></div>
           <h2 style={{ fontSize:'clamp(2.5rem,5vw,4rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3.5rem', lineHeight:1.05 }}>Say it. GoalOS builds it.</h2>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.5rem' }}>
+          <div className="goalos-examples-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.5rem' }}>
             {examples.map(({ Icon, say, pills }, i) => (
               <Reveal key={i} delay={i * 120}>
                 <div className="dark-card" style={{ padding:'2.5rem', height:'100%' }}>
@@ -190,8 +190,8 @@ export default function GoalOS() {
 
       {/* ── Key Features ── */}
       <section className="section">
-        <div style={{ padding:P, maxWidth:'100%' }}>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.5rem' }}>
+        <div className="goalos-pad">
+          <div className="goalos-features-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.5rem' }}>
             {features.map(({ Icon, t, d }, i) => (
               <Reveal key={i} delay={i * 150}>
                 <div className="glass-card" style={{ padding:'2.5rem', height:'100%' }}>
@@ -207,12 +207,12 @@ export default function GoalOS() {
 
       {/* ── Architecture ── */}
       <section className="section">
-        <div style={{ padding:P, maxWidth:'100%' }}>
+        <div className="goalos-pad">
           <div className="label-line"><span className="label-tag">GBC Hybrid Architecture</span></div>
           <h2 style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3.5rem', lineHeight:1.1 }}>
             Local speed. Cloud reasoning.<br />Invisible orchestration.
           </h2>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1.5rem', marginBottom:'1.5rem' }}>
+          <div className="goalos-arch-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1.5rem', marginBottom:'1.5rem' }}>
             {[{
               Icon: ICPU, side:'LOCAL LAYER', sub:'On your device.',
               items:['Fast, low-latency operations','Privacy-sensitive tasks stay private','Instant context retrieval'],
@@ -248,12 +248,12 @@ export default function GoalOS() {
 
       {/* ── Audience ── */}
       <section className="section">
-        <div style={{ padding:P, maxWidth:'100%' }}>
+        <div className="goalos-pad">
           <div className="label-line"><span className="label-tag">Who It's For</span></div>
           <h2 style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3rem', lineHeight:1.1 }}>
             Everyone who's ever fought with software.
           </h2>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(5,1fr)', gap:'1rem' }}>
+          <div className="goalos-audience-grid" style={{ display:'grid', gridTemplateColumns:'repeat(5,1fr)', gap:'1rem' }}>
             {audience.map(([n,title,desc]) => (
               <Reveal key={n}>
                 <div className="dark-card" style={{ padding:'1.75rem' }}>
@@ -269,12 +269,12 @@ export default function GoalOS() {
 
       {/* ── Comparison Table ── */}
       <section className="section">
-        <div style={{ padding:P, maxWidth:'100%' }}>
+        <div className="goalos-pad">
           <div className="label-line"><span className="label-tag">VS. Everything Else</span></div>
           <h2 style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3rem', lineHeight:1.1 }}>
             A new category needs<br />a new comparison.
           </h2>
-          <div style={{ borderRadius:'1rem', overflow:'hidden', border:'1px solid rgba(255,255,255,0.07)' }}>
+          <div className="comparison-table-wrap" style={{ border:'1px solid rgba(255,255,255,0.07)', borderRadius:'1rem' }}>
             <table className="comparison-table" style={{ width:'100%' }}>
               <thead>
                 <tr style={{ background:'rgba(255,255,255,0.02)' }}>
@@ -301,8 +301,8 @@ export default function GoalOS() {
 
       {/* ── Vision / Today vs GoalOS ── */}
       <section className="section">
-        <div style={{ padding:P, maxWidth:'100%' }}>
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'4rem' }}>
+        <div className="goalos-pad">
+          <div className="goalos-vision-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'4rem' }}>
             <div>
               <div className="label-tag" style={{ marginBottom:'2rem' }}>Today</div>
               {vision.map(([t]) => (
@@ -323,8 +323,8 @@ export default function GoalOS() {
 
       {/* ── Final CTA ── */}
       <section className="section">
-        <div style={{ padding:P, maxWidth:'100%' }}>
-          <div style={{ padding:'4rem', textAlign:'center', borderRadius:'1rem', border:'1px solid rgba(37,99,235,0.15)', background:'rgba(37,99,235,0.04)' }}>
+        <div className="goalos-pad">
+          <div className="goalos-cta-inner" style={{ padding:'4rem', textAlign:'center', borderRadius:'1rem', border:'1px solid rgba(37,99,235,0.15)', background:'rgba(37,99,235,0.04)' }}>
             <div style={{ fontSize:'1.5rem', marginBottom:'1rem', color:'#2563eb' }}>✦</div>
             <h2 style={{ fontSize:'clamp(1.8rem,3.5vw,2.8rem)', fontWeight:600, letterSpacing:'-0.04em', marginBottom:'1rem', lineHeight:1.1 }}>
               Be among the first to compute by goal.
@@ -342,14 +342,63 @@ export default function GoalOS() {
 
       <Footer />
       <style>{`
-        @media(max-width:1024px){
-          section [style*="repeat(5,1fr)"]{grid-template-columns:1fr 1fr!important;}
-          section [style*="repeat(3,1fr)"]{grid-template-columns:1fr 1fr!important;}
+        /* ── Comparison table ── */
+        .comparison-table-wrap {
+          overflow: hidden;
+          border-radius: 1rem;
+          position: relative;
         }
-        @media(max-width:768px){
-          section [style*="1fr 1fr"]{grid-template-columns:1fr!important;}
-          section [style*="repeat(3,1fr)"]{grid-template-columns:1fr!important;}
-          section [style*="padding: 0 4rem"],[style*="padding:0 4rem"]{padding:0 1.5rem!important;}
+        .comparison-table th,
+        .comparison-table td {
+          white-space: nowrap;
+        }
+
+        /* ── GoalOS: section padding ── */
+        .goalos-pad { padding: 0 4rem; max-width: 100%; }
+
+        /* ── Tablet (≤1024px) ── */
+        @media (max-width: 1024px) {
+          .goalos-pad { padding: 0 2rem; }
+          .goalos-examples-grid { grid-template-columns: 1fr 1fr !important; }
+          .goalos-features-grid { grid-template-columns: 1fr 1fr !important; }
+          .goalos-audience-grid { grid-template-columns: 1fr 1fr 1fr !important; }
+        }
+
+        /* ── Mobile (≤768px) ── */
+        @media (max-width: 768px) {
+          .goalos-pad { padding: 0 1.25rem; }
+          .goalos-problem-grid  { grid-template-columns: 1fr !important; gap: 2rem !important; }
+          .goalos-examples-grid { grid-template-columns: 1fr !important; }
+          .goalos-features-grid { grid-template-columns: 1fr !important; }
+          .goalos-arch-grid     { grid-template-columns: 1fr !important; }
+          .goalos-audience-grid { grid-template-columns: 1fr 1fr !important; }
+          .goalos-vision-grid   { grid-template-columns: 1fr !important; gap: 2rem !important; }
+          .goalos-step-item     { grid-template-columns: 60px 1fr !important; gap: 1rem !important; }
+          .goalos-cta-inner     { padding: 2.5rem 1.5rem !important; }
+
+          /* Table: switch to horizontal scroll */
+          .comparison-table-wrap {
+            overflow-x: auto;
+            overflow-y: visible;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 0.75rem;
+          }
+          .comparison-table {
+            min-width: 560px;
+          }
+          .comparison-table th,
+          .comparison-table td {
+            padding: 0.85rem 1rem;
+            font-size: 0.8rem;
+          }
+        }
+
+        /* ── Small mobile (≤480px) ── */
+        @media (max-width: 480px) {
+          .goalos-pad { padding: 0 1rem; }
+          .goalos-audience-grid { grid-template-columns: 1fr !important; }
+          .goalos-cta-inner { padding: 2rem 1rem !important; }
+          .comparison-table { min-width: 500px; }
         }
       `}</style>
     </div>

@@ -200,10 +200,39 @@ export default function Waitlist() {
       <Footer />
 
       <style>{`
+        /* ── Waitlist responsive ── */
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+          .waitlist-hero-grid { gap: 3rem !important; }
+        }
+
+        /* Mobile */
         @media (max-width: 768px) {
-          .waitlist-hero-grid { grid-template-columns: 1fr !important; }
-          .waves-grid { grid-template-columns: 1fr !important; }
+          .waitlist-hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+          }
+          .waves-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+          .waves-grid > div {
+            border-left: none !important;
+            padding-left: 0 !important;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 1.25rem;
+          }
+          .waves-grid > div:first-child {
+            border-top: none;
+            padding-top: 0;
+          }
           .form-row { grid-template-columns: 1fr !important; }
+        }
+
+        /* Small mobile */
+        @media (max-width: 480px) {
+          .waitlist-hero-grid { gap: 2rem !important; }
         }
       `}</style>
     </div>

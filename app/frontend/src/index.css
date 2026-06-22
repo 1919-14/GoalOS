@@ -42,6 +42,12 @@ body {
   cursor: none;
 }
 
+/* Restore native cursor on touch/coarse-pointer devices */
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  .btn-primary, .btn-secondary, .nav-pill, .role-pill { cursor: pointer; }
+}
+
 /* ─── Custom Cursor ─────────────────────────────────────── */
 .cursor-dot {
   position: fixed;
@@ -535,8 +541,55 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ─── Responsive ─────────────────────────────────────────── */
+
+/* ── Tablet (≤1024px) ── */
+@media (max-width: 1024px) {
+  .container-xl { padding: 0 1.75rem; }
+  .section { padding: 5rem 0; }
+}
+
+/* ── Mobile (≤768px) ── */
 @media (max-width: 768px) {
-  .section { padding: 4rem 0; }
+  .section { padding: 3.5rem 0; }
   .container-xl { padding: 0 1.25rem; }
   .scroll-dots { display: none; }
+
+  h1 { letter-spacing: -0.04em; }
+  h2 { letter-spacing: -0.03em; }
+
+  .dark-card, .glass-card { border-radius: 0.75rem; }
+
+  .btn-primary, .btn-secondary {
+    font-size: 0.82rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  /* Comparison table — scrollable on mobile */
+  .comparison-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 1rem;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .footer { padding: 3rem 0 1.5rem; }
+  .glass-nav { padding: 0.65rem 1.25rem !important; }
+}
+
+/* ── Small mobile (≤480px) ── */
+@media (max-width: 480px) {
+  .section { padding: 3rem 0; }
+  .container-xl { padding: 0 1rem; }
+
+  .btn-primary, .btn-secondary {
+    font-size: 0.8rem;
+    padding: 0.55rem 1rem;
+  }
+
+  .glass-nav { padding: 0.6rem 1rem !important; }
 }
