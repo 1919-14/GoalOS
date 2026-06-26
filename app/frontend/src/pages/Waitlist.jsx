@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -63,6 +64,18 @@ export default function Waitlist() {
 
   return (
     <div className="page-content">
+      <Helmet>
+        <title>Waitlist — GoalOS Early Access</title>
+        <meta name="description" content="Join the GoalOS waitlist. Be early. Be heard. Get early access to the first Adaptive Goal-Driven Computing Platform." />
+        <meta property="og:title" content="Waitlist — GoalOS Early Access" />
+        <meta property="og:description" content="Join the GoalOS waitlist. Be early. Be heard. Get early access to the first Adaptive Goal-Driven Computing Platform." />
+        <meta property="og:url" content="https://goalcomputinglabs.page/waitlist" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Waitlist — GoalOS Early Access" />
+        <meta name="twitter:description" content="Join the GoalOS waitlist. Be early. Be heard. Get early access to the first Adaptive Goal-Driven Computing Platform." />
+        <link rel="canonical" href="https://goalcomputinglabs.page/waitlist" />
+      </Helmet>
       <Navigation />
 
       <section style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingTop: '7rem', paddingBottom: '4rem' }}>

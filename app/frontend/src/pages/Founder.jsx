@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Navigation from '../components/Navigation';
@@ -25,6 +26,31 @@ export default function Founder() {
 
   return (
     <div className="page-content">
+      <Helmet>
+        <title>About — Sai & the Goal Computing Labs Story</title>
+        <meta name="description" content="Meet Sai, founder of Goal Computing Labs. Human-first technology, invisible computing, and long-arc thinking — building the future of Goal-Based Computing." />
+        <meta property="og:title" content="About — Sai & the Goal Computing Labs Story" />
+        <meta property="og:description" content="Meet Sai, founder of Goal Computing Labs. Human-first technology, invisible computing, and long-arc thinking." />
+        <meta property="og:url" content="https://goalcomputinglabs.page/about" />
+        <meta property="og:type" content="profile" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About — Sai & the Goal Computing Labs Story" />
+        <meta name="twitter:description" content="Meet Sai, founder of Goal Computing Labs. Human-first technology, invisible computing, and long-arc thinking." />
+        <link rel="canonical" href="https://goalcomputinglabs.page/about" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Sai",
+            "jobTitle": "Founder",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Goal Computing Labs"
+            },
+            "url": "https://goalcomputinglabs.page/about"
+          }
+        `}</script>
+      </Helmet>
       <Navigation />
 
       {/* ── Hero ── */}

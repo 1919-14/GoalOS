@@ -1,7 +1,10 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import NetworkGraph from '../components/NetworkGraph';
+import LazySection from '../components/LazySection';
 
 /* ── Scroll-reveal hook ── */
 function useReveal(delay = 0) {
@@ -85,262 +88,320 @@ export default function GoalOS() {
 
   return (
     <div className="page-content">
+      <Helmet>
+        <title>GoalOS — The Adaptive Goal-Driven Computing Platform</title>
+        <meta name="description" content="GoalOS is the world's first Adaptive Goal-Driven Computing Platform. Describe your goal. GoalOS handles the rest — no menus, no tutorials, no configuration." />
+        <meta property="og:title" content="GoalOS — The Adaptive Goal-Driven Computing Platform" />
+        <meta property="og:description" content="GoalOS is the world's first Adaptive Goal-Driven Computing Platform. Describe your goal. GoalOS handles the rest — no menus, no tutorials, no configuration." />
+        <meta property="og:url" content="https://goalcomputinglabs.page/goalos" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="GoalOS — The Adaptive Goal-Driven Computing Platform" />
+        <meta name="twitter:description" content="GoalOS is the world's first Adaptive Goal-Driven Computing Platform. Describe your goal. GoalOS handles the rest — no menus, no tutorials, no configuration." />
+        <link rel="canonical" href="https://goalcomputinglabs.page/goalos" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "GoalOS",
+            "applicationCategory": "OperatingSystem",
+            "operatingSystem": "Web",
+            "description": "The world's first Adaptive Goal-Driven Computing Platform. Describe your goal. GoalOS handles the rest.",
+            "url": "https://goalcomputinglabs.page/goalos",
+            "author": {
+              "@type": "Organization",
+              "name": "Goal Computing Labs"
+            }
+          }
+        `}</script>
+      </Helmet>
       <Navigation />
 
       {/* ── Hero ── */}
       <section style={{ minHeight:'100vh', display:'flex', flexDirection:'column', justifyContent:'center', paddingTop:'7rem', paddingBottom:'4rem' }}>
         <div className="goalos-pad">
-          <div style={{ ...hf(0), display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'2rem' }}>
-            <div style={{ width:'2rem', height:'2px', background:'#2563eb', borderRadius:'2px' }} />
-            <span style={{ fontFamily:'Outfit,sans-serif', fontSize:'0.65rem', fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', color:'#2563eb' }}>
-              Product · Now in Development
-            </span>
-          </div>
-
-          {/* Headline — Goal (serif italic) + OS (bold blue glow) */}
-          <h1 style={{ ...hf(0.1), fontSize:'clamp(5rem,14vw,12rem)', fontWeight:300, lineHeight:0.9, letterSpacing:'-0.05em', marginBottom:'2rem' }}>
-            <span style={{ fontFamily:'Playfair Display,Georgia,serif', fontStyle:'italic', fontWeight:400, color:'#fff' }}>Goal</span>
-            <span style={{
-              fontFamily:'Outfit,sans-serif', fontWeight:700, color:'#2563eb',
-              textShadow:'0 0 60px rgba(37,99,235,0.6), 0 0 120px rgba(37,99,235,0.3)',
-              letterSpacing:'-0.04em',
-            }}>OS</span>
-          </h1>
-
-          <div style={hf(0.2)}>
-            <p style={{ fontSize:'1.2rem', color:'#fff', fontFamily:'Outfit,sans-serif', fontWeight:400, maxWidth:'600px', marginBottom:'0.5rem', lineHeight:1.4 }}>
-              The world's first <strong>Adaptive Goal-Driven Computing Platform.</strong>
-            </p>
-            <p style={{ fontSize:'1rem', color:'#52525b', fontFamily:'Outfit,sans-serif', marginBottom:'0.75rem' }}>
-              Not an OS. Not an app builder. Not a developer tool.
-            </p>
-            <p style={{ fontSize:'0.95rem', color:'#71717a', maxWidth:'520px', lineHeight:1.8, marginBottom:'2.5rem' }}>
-              A universal task-execution environment powered by AI — designed for every human, regardless of technical skill.
-            </p>
-            <div style={{ display:'flex', gap:'0.75rem', flexWrap:'wrap' }}>
-              <Link to="/waitlist" className="btn-primary" data-testid="goalos-hero-waitlist" style={{ fontSize:'0.9rem', padding:'0.75rem 1.6rem' }}>Join the waitlist →</Link>
-              <a href="#how-it-works" className="btn-secondary" data-testid="goalos-hero-how" style={{ fontSize:'0.9rem', padding:'0.75rem 1.6rem' }}>How it works</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Problem ── */}
-      <section className="section">
-        <div className="goalos-pad">
-          <div className="goalos-problem-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'6rem', alignItems:'center' }}>
+          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'4rem', alignItems:'center' }} className="goalos-hero-grid">
+            {/* Left: Text */}
             <div>
-              <div className="label-line"><span className="label-tag">The Problem</span></div>
-              <h2 style={{ fontSize:'clamp(2.5rem,5vw,4rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0', lineHeight:1.05 }}>Today's model<br />is broken.</h2>
-            </div>
-            <div className="dark-card" style={{ padding:'2.5rem' }}>
-              <div style={{ fontFamily:'Outfit,sans-serif', fontSize:'0.9rem', color:'#52525b', padding:'1rem 1.25rem', background:'rgba(255,255,255,0.02)', borderRadius:'0.5rem', letterSpacing:'0.02em', marginBottom:'1.5rem' }}>
-                need → find software → learn software → adapt → perform task → result
+              <div style={{ ...hf(0), display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'2rem' }}>
+                <div style={{ width:'2rem', height:'2px', background:'#2563eb', borderRadius:'2px' }} />
+                <span style={{ fontFamily:'Outfit,sans-serif', fontSize:'0.65rem', fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', color:'#2563eb' }}>
+                  Product · Now in Development
+                </span>
               </div>
-              <p style={{ fontSize:'0.9rem', color:'#71717a', lineHeight:1.85 }}>
-                Every app has its own interface, workflow, installation, and learning curve. The user is a <em style={{ fontFamily:'Playfair Display,serif', fontStyle:'italic', color:'#a1a1aa' }}>slave</em> to the software — especially non-technical everyday users.
-              </p>
+
+              <h1 style={{ ...hf(0.1), fontSize:'clamp(5rem,14vw,12rem)', fontWeight:300, lineHeight:0.9, letterSpacing:'-0.05em', marginBottom:'2rem' }}>
+                <span style={{ fontFamily:'Playfair Display,Georgia,serif', fontStyle:'italic', fontWeight:400, color:'#fff' }}>Goal</span>
+                <span style={{
+                  fontFamily:'Outfit,sans-serif', fontWeight:700, color:'#2563eb',
+                  textShadow:'0 0 60px rgba(37,99,235,0.6), 0 0 120px rgba(37,99,235,0.3)',
+                  letterSpacing:'-0.04em',
+                }}>OS</span>
+              </h1>
+
+              <div style={hf(0.2)}>
+                <p style={{ fontSize:'1.2rem', color:'#fff', fontFamily:'Outfit,sans-serif', fontWeight:400, maxWidth:'600px', marginBottom:'0.5rem', lineHeight:1.4 }}>
+                  The world's first <strong>Adaptive Goal-Driven Computing Platform.</strong>
+                </p>
+                <p style={{ fontSize:'1rem', color:'#52525b', fontFamily:'Outfit,sans-serif', marginBottom:'0.75rem' }}>
+                  Not an OS. Not an app builder. Not a developer tool.
+                </p>
+                <p style={{ fontSize:'0.95rem', color:'#71717a', maxWidth:'520px', lineHeight:1.8, marginBottom:'2.5rem' }}>
+                  A universal task-execution environment powered by AI — designed for every human, regardless of technical skill.
+                </p>
+                <div style={{ display:'flex', gap:'0.75rem', flexWrap:'wrap' }}>
+                  <Link to="/waitlist" className="btn-primary" data-testid="goalos-hero-waitlist" style={{ fontSize:'0.9rem', padding:'0.75rem 1.6rem' }}>Join the waitlist →</Link>
+                  <a href="#how-it-works" className="btn-secondary" data-testid="goalos-hero-how" style={{ fontSize:'0.9rem', padding:'0.75rem 1.6rem' }}>How it works</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Network graph */}
+            <div style={{ ...hf(0.3), display:'flex', alignItems:'center', justifyContent:'center', minHeight:'500px' }}>
+              <div style={{ width:'100%', maxWidth:'560px' }}>
+                <NetworkGraph />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── How GBC Works ── */}
-      <section className="section" id="how-it-works">
-        <div className="goalos-pad">
-          <div className="label-line"><span className="label-tag">How GBC Works</span></div>
-          <h2 style={{ fontSize:'clamp(2.5rem,5vw,4rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 4rem', lineHeight:1.05 }}>
-            Five steps. Zero learning.<br />Infinite goals.
-          </h2>
-          {steps.map((s, i) => (
-            <Reveal key={i} delay={i * 100}>
-              <div className="goalos-step-item" style={{ display:'grid', gridTemplateColumns:'100px 1fr', gap:'2rem', padding:'2.5rem 0', borderBottom:'1px solid rgba(255,255,255,0.05)', alignItems:'start' }}>
-                <div style={{ fontFamily:'Outfit,sans-serif', fontSize:'3rem', fontWeight:200, color:'rgba(37,99,235,0.35)', letterSpacing:'-0.05em', lineHeight:1 }}>{s.n}</div>
-                <div>
-                  <div style={{ fontSize:'1.1rem', fontWeight:600, color:'#fff', marginBottom:'0.6rem', fontFamily:'Outfit,sans-serif' }}>{s.t}</div>
-                  <p style={{ fontSize:'0.9rem', color:'#71717a', lineHeight:1.85 }}>{s.d}</p>
-                </div>
+      <LazySection>
+        {/* ── Problem ── */}
+        <section className="section">
+          <div className="goalos-pad">
+            <div className="goalos-problem-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'6rem', alignItems:'center' }}>
+              <div>
+                <div className="label-line"><span className="label-tag">The Problem</span></div>
+                <h2 style={{ fontSize:'clamp(2.5rem,5vw,4rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0', lineHeight:1.05 }}>Today's model<br />is broken.</h2>
               </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Live Examples ── */}
-      <section className="section">
-        <div className="goalos-pad">
-          <div className="label-line"><span className="label-tag">Live Examples</span></div>
-          <h2 style={{ fontSize:'clamp(2.5rem,5vw,4rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3.5rem', lineHeight:1.05 }}>Say it. GoalOS builds it.</h2>
-          <div className="goalos-examples-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.5rem' }}>
-            {examples.map(({ Icon, say, pills }, i) => (
-              <Reveal key={i} delay={i * 120}>
-                <div className="dark-card" style={{ padding:'2.5rem', height:'100%' }}>
-                  <div style={{ marginBottom:'1.5rem' }}><Icon /></div>
-                  <h3 style={{ fontSize:'1.4rem', fontFamily:'Playfair Display,serif', fontStyle:'italic', fontWeight:400, color:'#fff', marginBottom:'1.75rem', lineHeight:1.2 }}>{say}</h3>
-                  <div className="label-tag" style={{ marginBottom:'1rem' }}>Generates</div>
-                  <div style={{ display:'flex', flexWrap:'wrap', gap:'0.5rem' }}>
-                    {pills.map(p => <span key={p} className="workflow-pill">{p}</span>)}
-                  </div>
+              <div className="dark-card" style={{ padding:'2.5rem' }}>
+                <div style={{ fontFamily:'Outfit,sans-serif', fontSize:'0.9rem', color:'#52525b', padding:'1rem 1.25rem', background:'rgba(255,255,255,0.02)', borderRadius:'0.5rem', letterSpacing:'0.02em', marginBottom:'1.5rem' }}>
+                  need → find software → learn software → adapt → perform task → result
                 </div>
-              </Reveal>
-            ))}
+                <p style={{ fontSize:'0.9rem', color:'#71717a', lineHeight:1.85 }}>
+                  Every app has its own interface, workflow, installation, and learning curve. The user is a <em style={{ fontFamily:'Playfair Display,serif', fontStyle:'italic', color:'#a1a1aa' }}>slave</em> to the software — especially non-technical everyday users.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </LazySection>
 
-      {/* ── Key Features ── */}
-      <section className="section">
-        <div className="goalos-pad">
-          <div className="goalos-features-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.5rem' }}>
-            {features.map(({ Icon, t, d }, i) => (
-              <Reveal key={i} delay={i * 150}>
-                <div className="glass-card" style={{ padding:'2.5rem', height:'100%' }}>
-                  <div style={{ marginBottom:'1.5rem', color:'#fff' }}><Icon /></div>
-                  <div style={{ fontSize:'1.1rem', fontWeight:600, color:'#fff', marginBottom:'0.85rem', fontFamily:'Outfit,sans-serif' }}>{t}</div>
-                  <p style={{ fontSize:'0.875rem', color:'#71717a', lineHeight:1.85 }}>{d}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Architecture ── */}
-      <section className="section">
-        <div className="goalos-pad">
-          <div className="label-line"><span className="label-tag">GBC Hybrid Architecture</span></div>
-          <h2 style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3.5rem', lineHeight:1.1 }}>
-            Local speed. Cloud reasoning.<br />Invisible orchestration.
-          </h2>
-          <div className="goalos-arch-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1.5rem', marginBottom:'1.5rem' }}>
-            {[{
-              Icon: ICPU, side:'LOCAL LAYER', sub:'On your device.',
-              items:['Fast, low-latency operations','Privacy-sensitive tasks stay private','Instant context retrieval'],
-              accent:'rgba(37,99,235,0.08)', border:'rgba(37,99,235,0.2)',
-            },{
-              Icon: ICloud, side:'CLOUD LAYER', sub:'For heavy thinking.',
-              items:['Complex multi-step reasoning','Dynamic UI generation','Advanced AI planning'],
-              accent:'rgba(255,255,255,0.02)', border:'rgba(255,255,255,0.07)',
-            }].map((box, i) => (
+      <LazySection>
+        {/* ── How GBC Works ── */}
+        <section className="section" id="how-it-works">
+          <div className="goalos-pad">
+            <div className="label-line"><span className="label-tag">How GBC Works</span></div>
+            <h2 style={{ fontSize:'clamp(2.5rem,5vw,4rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 4rem', lineHeight:1.05 }}>
+              Five steps. Zero learning.<br />Infinite goals.
+            </h2>
+            {steps.map((s, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div style={{ padding:'2.5rem', borderRadius:'1rem', border:`1px solid ${box.border}`, background:box.accent }}>
-                  <div style={{ display:'flex', alignItems:'center', gap:'0.85rem', marginBottom:'1.75rem' }}>
-                    <div style={{ color:'#fff' }}><box.Icon /></div>
-                    <div>
-                      <div className="label-tag">{box.side}</div>
-                      <div style={{ fontSize:'1.25rem', fontWeight:500, color:'#fff', fontFamily:'Outfit,sans-serif', marginTop:'0.25rem' }}>{box.sub}</div>
+                <div className="goalos-step-item" style={{ display:'grid', gridTemplateColumns:'100px 1fr', gap:'2rem', padding:'2.5rem 0', borderBottom:'1px solid rgba(255,255,255,0.05)', alignItems:'start' }}>
+                  <div style={{ fontFamily:'Outfit,sans-serif', fontSize:'3rem', fontWeight:200, color:'rgba(37,99,235,0.35)', letterSpacing:'-0.05em', lineHeight:1 }}>{s.n}</div>
+                  <div>
+                    <div style={{ fontSize:'1.1rem', fontWeight:600, color:'#fff', marginBottom:'0.6rem', fontFamily:'Outfit,sans-serif' }}>{s.t}</div>
+                    <p style={{ fontSize:'0.9rem', color:'#71717a', lineHeight:1.85 }}>{s.d}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      </LazySection>
+
+      <LazySection>
+        {/* ── Live Examples ── */}
+        <section className="section">
+          <div className="goalos-pad">
+            <div className="label-line"><span className="label-tag">Live Examples</span></div>
+            <h2 style={{ fontSize:'clamp(2.5rem,5vw,4rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3.5rem', lineHeight:1.05 }}>Say it. GoalOS builds it.</h2>
+            <div className="goalos-examples-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.5rem' }}>
+              {examples.map(({ Icon, say, pills }, i) => (
+                <Reveal key={i} delay={i * 120}>
+                  <div className="dark-card" style={{ padding:'2.5rem', height:'100%' }}>
+                    <div style={{ marginBottom:'1.5rem' }}><Icon /></div>
+                    <h3 style={{ fontSize:'1.4rem', fontFamily:'Playfair Display,serif', fontStyle:'italic', fontWeight:400, color:'#fff', marginBottom:'1.75rem', lineHeight:1.2 }}>{say}</h3>
+                    <div className="label-tag" style={{ marginBottom:'1rem' }}>Generates</div>
+                    <div style={{ display:'flex', flexWrap:'wrap', gap:'0.5rem' }}>
+                      {pills.map(p => <span key={p} className="workflow-pill">{p}</span>)}
                     </div>
                   </div>
-                  {box.items.map(it => (
-                    <div key={it} style={{ display:'flex', alignItems:'center', gap:'0.75rem', fontSize:'0.9rem', color:'#a1a1aa', padding:'0.75rem 0', borderBottom:'1px solid rgba(255,255,255,0.04)' }}>
-                      <span style={{ color:'#2563eb', flexShrink:0 }}>—</span>{it}
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <p style={{ textAlign:'center', fontSize:'0.82rem', color:'#3f3f46', fontFamily:'Outfit,sans-serif' }}>
-            GBC automatically decides which layer handles each request — you never think about it.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Audience ── */}
-      <section className="section">
-        <div className="goalos-pad">
-          <div className="label-line"><span className="label-tag">Who It's For</span></div>
-          <h2 style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3rem', lineHeight:1.1 }}>
-            Everyone who's ever fought with software.
-          </h2>
-          <div className="goalos-audience-grid" style={{ display:'grid', gridTemplateColumns:'repeat(5,1fr)', gap:'1rem' }}>
-            {audience.map(([n,title,desc]) => (
-              <Reveal key={n}>
-                <div className="dark-card" style={{ padding:'1.75rem' }}>
-                  <div style={{ fontSize:'2rem', fontWeight:200, color:'rgba(37,99,235,0.4)', fontFamily:'Outfit,sans-serif', letterSpacing:'-0.04em', marginBottom:'0.75rem' }}>{n}</div>
-                  <div style={{ fontSize:'0.9rem', fontWeight:600, color:'#fff', marginBottom:'0.5rem', fontFamily:'Outfit,sans-serif' }}>{title}</div>
-                  <p style={{ fontSize:'0.8rem', color:'#71717a', lineHeight:1.7 }}>{desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Comparison Table ── */}
-      <section className="section">
-        <div className="goalos-pad">
-          <div className="label-line"><span className="label-tag">VS. Everything Else</span></div>
-          <h2 style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3rem', lineHeight:1.1 }}>
-            A new category needs<br />a new comparison.
-          </h2>
-          <div className="comparison-table-wrap" style={{ border:'1px solid rgba(255,255,255,0.07)', borderRadius:'1rem' }}>
-            <table className="comparison-table" style={{ width:'100%' }}>
-              <thead>
-                <tr style={{ background:'rgba(255,255,255,0.02)' }}>
-                  <th style={{ width:'22%' }}>Factor</th>
-                  <th>Traditional</th>
-                  <th>AI App Builders</th>
-                  <th style={{ background:'rgba(37,99,235,0.12)', color:'#fff', borderLeft:'1px solid rgba(37,99,235,0.25)' }}>GoalOS</th>
-                </tr>
-              </thead>
-              <tbody>
-                {tableRows.map(([factor, trad, ai, goalos]) => (
-                  <tr key={factor}>
-                    <td className="factor">{factor}</td>
-                    <td>{trad}</td>
-                    <td>{ai}</td>
-                    <td style={{ background:'rgba(37,99,235,0.06)', color:'#fff', fontWeight:600, borderLeft:'1px solid rgba(37,99,235,0.15)', fontFamily:'Outfit,sans-serif', fontSize:'0.9rem' }}>{goalos}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Vision / Today vs GoalOS ── */}
-      <section className="section">
-        <div className="goalos-pad">
-          <div className="goalos-vision-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'4rem' }}>
-            <div>
-              <div className="label-tag" style={{ marginBottom:'2rem' }}>Today</div>
-              {vision.map(([t]) => (
-                <div key={t} style={{ fontSize:'1.15rem', color:'#3f3f46', padding:'1.25rem 0', borderBottom:'1px solid rgba(255,255,255,0.04)', fontFamily:'Outfit,sans-serif', textDecoration:'line-through' }}>{t}</div>
-              ))}
-            </div>
-            <div>
-              <div className="label-tag" style={{ marginBottom:'2rem', color:'#2563eb' }}>With GoalOS</div>
-              {vision.map(([, g], i) => (
-                <Reveal key={g} delay={i * 80}>
-                  <div style={{ fontSize:'1.15rem', color:'#fff', fontWeight:500, padding:'1.25rem 0', borderBottom:'1px solid rgba(255,255,255,0.05)', fontFamily:'Outfit,sans-serif' }}>{g}</div>
                 </Reveal>
               ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </LazySection>
 
-      {/* ── Final CTA ── */}
-      <section className="section">
-        <div className="goalos-pad">
-          <div className="goalos-cta-inner" style={{ padding:'4rem', textAlign:'center', borderRadius:'1rem', border:'1px solid rgba(37,99,235,0.15)', background:'rgba(37,99,235,0.04)' }}>
-            <div style={{ fontSize:'1.5rem', marginBottom:'1rem', color:'#2563eb' }}>✦</div>
-            <h2 style={{ fontSize:'clamp(1.8rem,3.5vw,2.8rem)', fontWeight:600, letterSpacing:'-0.04em', marginBottom:'1rem', lineHeight:1.1 }}>
-              Be among the first to compute by goal.
-            </h2>
-            <p style={{ fontSize:'0.95rem', color:'#71717a', maxWidth:'480px', margin:'0 auto 2.5rem', lineHeight:1.8 }}>
-              We're inviting early users in waves. Reserve your place — and help shape what computing becomes.
-            </p>
-            <div style={{ display:'flex', gap:'0.75rem', justifyContent:'center', flexWrap:'wrap' }}>
-              <Link to="/waitlist" className="btn-primary" style={{ fontSize:'0.9rem', padding:'0.75rem 1.6rem' }} data-testid="goalos-cta-waitlist">Join the waitlist →</Link>
-              <Link to="/about" className="btn-secondary" style={{ fontSize:'0.9rem', padding:'0.75rem 1.6rem' }} data-testid="goalos-cta-founder">Meet the founder</Link>
+      <LazySection>
+        {/* ── Key Features ── */}
+        <section className="section">
+          <div className="goalos-pad">
+            <div className="goalos-features-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'1.5rem' }}>
+              {features.map(({ Icon, t, d }, i) => (
+                <Reveal key={i} delay={i * 150}>
+                  <div className="glass-card" style={{ padding:'2.5rem', height:'100%' }}>
+                    <div style={{ marginBottom:'1.5rem', color:'#fff' }}><Icon /></div>
+                    <div style={{ fontSize:'1.1rem', fontWeight:600, color:'#fff', marginBottom:'0.85rem', fontFamily:'Outfit,sans-serif' }}>{t}</div>
+                    <p style={{ fontSize:'0.875rem', color:'#71717a', lineHeight:1.85 }}>{d}</p>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </LazySection>
 
-      <Footer />
+      <LazySection>
+        {/* ── Architecture ── */}
+        <section className="section">
+          <div className="goalos-pad">
+            <div className="label-line"><span className="label-tag">GBC Hybrid Architecture</span></div>
+            <h2 style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3.5rem', lineHeight:1.1 }}>
+              Local speed. Cloud reasoning.<br />Invisible orchestration.
+            </h2>
+            <div className="goalos-arch-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1.5rem', marginBottom:'1.5rem' }}>
+              {[{
+                Icon: ICPU, side:'LOCAL LAYER', sub:'On your device.',
+                items:['Fast, low-latency operations','Privacy-sensitive tasks stay private','Instant context retrieval'],
+                accent:'rgba(37,99,235,0.08)', border:'rgba(37,99,235,0.2)',
+              },{
+                Icon: ICloud, side:'CLOUD LAYER', sub:'For heavy thinking.',
+                items:['Complex multi-step reasoning','Dynamic UI generation','Advanced AI planning'],
+                accent:'rgba(255,255,255,0.02)', border:'rgba(255,255,255,0.07)',
+              }].map((box, i) => (
+                <Reveal key={i} delay={i * 100}>
+                  <div style={{ padding:'2.5rem', borderRadius:'1rem', border:`1px solid ${box.border}`, background:box.accent }}>
+                    <div style={{ display:'flex', alignItems:'center', gap:'0.85rem', marginBottom:'1.75rem' }}>
+                      <div style={{ color:'#fff' }}><box.Icon /></div>
+                      <div>
+                        <div className="label-tag">{box.side}</div>
+                        <div style={{ fontSize:'1.25rem', fontWeight:500, color:'#fff', fontFamily:'Outfit,sans-serif', marginTop:'0.25rem' }}>{box.sub}</div>
+                      </div>
+                    </div>
+                    {box.items.map(it => (
+                      <div key={it} style={{ display:'flex', alignItems:'center', gap:'0.75rem', fontSize:'0.9rem', color:'#a1a1aa', padding:'0.75rem 0', borderBottom:'1px solid rgba(255,255,255,0.04)' }}>
+                        <span style={{ color:'#2563eb', flexShrink:0 }}>—</span>{it}
+                      </div>
+                    ))}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <p style={{ textAlign:'center', fontSize:'0.82rem', color:'#3f3f46', fontFamily:'Outfit,sans-serif' }}>
+              GBC automatically decides which layer handles each request — you never think about it.
+            </p>
+          </div>
+        </section>
+      </LazySection>
+
+      <LazySection>
+        {/* ── Audience ── */}
+        <section className="section">
+          <div className="goalos-pad">
+            <div className="label-line"><span className="label-tag">Who It's For</span></div>
+            <h2 style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3rem', lineHeight:1.1 }}>
+              Everyone who's ever fought with software.
+            </h2>
+            <div className="goalos-audience-grid" style={{ display:'grid', gridTemplateColumns:'repeat(5,1fr)', gap:'1rem' }}>
+              {audience.map(([n,title,desc]) => (
+                <Reveal key={n}>
+                  <div className="dark-card" style={{ padding:'1.75rem' }}>
+                    <div style={{ fontSize:'2rem', fontWeight:200, color:'rgba(37,99,235,0.4)', fontFamily:'Outfit,sans-serif', letterSpacing:'-0.04em', marginBottom:'0.75rem' }}>{n}</div>
+                    <div style={{ fontSize:'0.9rem', fontWeight:600, color:'#fff', marginBottom:'0.5rem', fontFamily:'Outfit,sans-serif' }}>{title}</div>
+                    <p style={{ fontSize:'0.8rem', color:'#71717a', lineHeight:1.7 }}>{desc}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      </LazySection>
+
+      <LazySection>
+        {/* ── Comparison Table ── */}
+        <section className="section">
+          <div className="goalos-pad">
+            <div className="label-line"><span className="label-tag">VS. Everything Else</span></div>
+            <h2 style={{ fontSize:'clamp(2.2rem,4.5vw,3.5rem)', fontWeight:600, letterSpacing:'-0.04em', margin:'1rem 0 3rem', lineHeight:1.1 }}>
+              A new category needs<br />a new comparison.
+            </h2>
+            <div className="comparison-table-wrap" style={{ border:'1px solid rgba(255,255,255,0.07)', borderRadius:'1rem' }}>
+              <table className="comparison-table" style={{ width:'100%' }}>
+                <thead>
+                  <tr style={{ background:'rgba(255,255,255,0.02)' }}>
+                    <th style={{ width:'22%' }}>Factor</th>
+                    <th>Traditional</th>
+                    <th>AI App Builders</th>
+                    <th style={{ background:'rgba(37,99,235,0.12)', color:'#fff', borderLeft:'1px solid rgba(37,99,235,0.25)' }}>GoalOS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableRows.map(([factor, trad, ai, goalos]) => (
+                    <tr key={factor}>
+                      <td className="factor">{factor}</td>
+                      <td>{trad}</td>
+                      <td>{ai}</td>
+                      <td style={{ background:'rgba(37,99,235,0.06)', color:'#fff', fontWeight:600, borderLeft:'1px solid rgba(37,99,235,0.15)', fontFamily:'Outfit,sans-serif', fontSize:'0.9rem' }}>{goalos}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </LazySection>
+
+      <LazySection>
+        {/* ── Vision / Today vs GoalOS ── */}
+        <section className="section">
+          <div className="goalos-pad">
+            <div className="goalos-vision-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'4rem' }}>
+              <div>
+                <div className="label-tag" style={{ marginBottom:'2rem' }}>Today</div>
+                {vision.map(([t]) => (
+                  <div key={t} style={{ fontSize:'1.15rem', color:'#3f3f46', padding:'1.25rem 0', borderBottom:'1px solid rgba(255,255,255,0.04)', fontFamily:'Outfit,sans-serif', textDecoration:'line-through' }}>{t}</div>
+                ))}
+              </div>
+              <div>
+                <div className="label-tag" style={{ marginBottom:'2rem', color:'#2563eb' }}>With GoalOS</div>
+                {vision.map(([, g], i) => (
+                  <Reveal key={g} delay={i * 80}>
+                    <div style={{ fontSize:'1.15rem', color:'#fff', fontWeight:500, padding:'1.25rem 0', borderBottom:'1px solid rgba(255,255,255,0.05)', fontFamily:'Outfit,sans-serif' }}>{g}</div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </LazySection>
+
+      <LazySection>
+        {/* ── Final CTA ── */}
+        <section className="section">
+          <div className="goalos-pad">
+            <div className="goalos-cta-inner" style={{ padding:'4rem', textAlign:'center', borderRadius:'1rem', border:'1px solid rgba(37,99,235,0.15)', background:'rgba(37,99,235,0.04)' }}>
+              <div style={{ fontSize:'1.5rem', marginBottom:'1rem', color:'#2563eb' }}>✦</div>
+              <h2 style={{ fontSize:'clamp(1.8rem,3.5vw,2.8rem)', fontWeight:600, letterSpacing:'-0.04em', marginBottom:'1rem', lineHeight:1.1 }}>
+                Be among the first to compute by goal.
+              </h2>
+              <p style={{ fontSize:'0.95rem', color:'#71717a', maxWidth:'480px', margin:'0 auto 2.5rem', lineHeight:1.8 }}>
+                We're inviting early users in waves. Reserve your place — and help shape what computing becomes.
+              </p>
+              <div style={{ display:'flex', gap:'0.75rem', justifyContent:'center', flexWrap:'wrap' }}>
+                <Link to="/waitlist" className="btn-primary" style={{ fontSize:'0.9rem', padding:'0.75rem 1.6rem' }} data-testid="goalos-cta-waitlist">Join the waitlist →</Link>
+                <Link to="/about" className="btn-secondary" style={{ fontSize:'0.9rem', padding:'0.75rem 1.6rem' }} data-testid="goalos-cta-founder">Meet the founder</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </LazySection>
+
+      <LazySection>
+        <Footer />
+      </LazySection>
       <style>{`
         /* ── Comparison table ── */
         .comparison-table-wrap {
@@ -359,6 +420,7 @@ export default function GoalOS() {
         /* ── Tablet (≤1024px) ── */
         @media (max-width: 1024px) {
           .goalos-pad { padding: 0 2rem; }
+          .goalos-hero-grid { grid-template-columns: 1fr 1fr !important; gap: 2rem !important; }
           .goalos-examples-grid { grid-template-columns: 1fr 1fr !important; }
           .goalos-features-grid { grid-template-columns: 1fr 1fr !important; }
           .goalos-audience-grid { grid-template-columns: 1fr 1fr 1fr !important; }
@@ -367,6 +429,7 @@ export default function GoalOS() {
         /* ── Mobile (≤768px) ── */
         @media (max-width: 768px) {
           .goalos-pad { padding: 0 1.25rem; }
+          .goalos-hero-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
           .goalos-problem-grid  { grid-template-columns: 1fr !important; gap: 2rem !important; }
           .goalos-examples-grid { grid-template-columns: 1fr !important; }
           .goalos-features-grid { grid-template-columns: 1fr !important; }
@@ -399,6 +462,50 @@ export default function GoalOS() {
           .goalos-audience-grid { grid-template-columns: 1fr !important; }
           .goalos-cta-inner { padding: 2rem 1rem !important; }
           .comparison-table { min-width: 500px; }
+        }
+        /* ── Network graph animations ── */
+        @keyframes nodeFadeIn {
+          from { opacity: 0; transform: scale(0); }
+          to   { opacity: 1; transform: scale(1); }
+        }
+        @keyframes lineGrow {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes dataFlow {
+          0%   { stroke-dashoffset: 24; }
+          100% { stroke-dashoffset: 0; }
+        }
+        .data-flow {
+          stroke-dasharray: 4 8;
+          animation: dataFlow 1.5s linear infinite;
+        }
+        @keyframes orbit {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+        .orbit-group {
+          transform-origin: 300px 300px;
+          animation: orbit 12s linear infinite;
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50%      { transform: translateY(-6px); }
+        }
+        .network-graph {
+          animation: float 5s ease-in-out infinite;
+        }
+
+        /* ── Skeleton shimmer ── */
+        @keyframes shimmer {
+          0%   { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .skeleton-shimmer {
+          background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 75%);
+          background-size: 200% 100%;
+          animation: shimmer 2s ease-in-out infinite;
+          border-radius: 0.5rem;
         }
       `}</style>
     </div>

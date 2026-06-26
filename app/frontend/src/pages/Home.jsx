@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Navigation from '../components/Navigation';
@@ -111,6 +112,28 @@ export default function Home() {
 
   return (
     <div className="page-content">
+      <Helmet>
+        <title>Goal Computing Labs — GoalOS | Goal-Based Computing</title>
+        <meta name="description" content="Goal Computing Labs — Pioneering GoalOS and Goal-Based Computing (GBC). Software that adapts to humans, not the other way around." />
+        <meta property="og:title" content="Goal Computing Labs — GoalOS | Goal-Based Computing" />
+        <meta property="og:description" content="GoalOS is the world's first Adaptive Goal-Driven Computing Platform. Describe your goal. GoalOS handles the rest." />
+        <meta property="og:url" content="https://goalcomputinglabs.page/" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Goal Computing Labs — GoalOS | Goal-Based Computing" />
+        <meta name="twitter:description" content="GoalOS is the world's first Adaptive Goal-Driven Computing Platform. Describe your goal. GoalOS handles the rest." />
+        <link rel="canonical" href="https://goalcomputinglabs.page/" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Goal Computing Labs",
+            "url": "https://goalcomputinglabs.page",
+            "logo": "https://goalcomputinglabs.page",
+            "knowsAbout": ["GoalOS", "Goal-Based Computing", "Operating Systems", "Adaptive Software"]
+          }
+        `}</script>
+      </Helmet>
       <Navigation />
 
       {/* ── Hero ─────────────────────────────────────────── */}

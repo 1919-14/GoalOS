@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import './index.css';
 import ScrollToTop from './components/ScrollToTop';
 import CustomCursor from './components/CustomCursor';
@@ -11,22 +12,24 @@ import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
-    <div className="App">
-      <CustomCursor />
-      <WebGLBackground />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/goalos" element={<GoalOS />} />
-          <Route path="/about" element={<Founder />} />
-          <Route path="/waitlist" element={<Waitlist />} />
-          {/* Fallback */}
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-      <Analytics />
-    </div>
+    <HelmetProvider>
+      <div className="App">
+        <CustomCursor />
+        <WebGLBackground />
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/goalos" element={<GoalOS />} />
+            <Route path="/about" element={<Founder />} />
+            <Route path="/waitlist" element={<Waitlist />} />
+            {/* Fallback */}
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+        <Analytics />
+      </div>
+    </HelmetProvider>
   );
 }
 
